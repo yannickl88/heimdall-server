@@ -1,0 +1,35 @@
+parameters:
+    app.configs_dir: "%kernel.project_dir%/%env(APP_PUBLISH_DIR)%/configs"
+    app.revisions_dir: "%kernel.project_dir%/%env(APP_PUBLISH_DIR)%/revisions"
+    app.tokens_dir: "%kernel.project_dir%/%env(APP_PUBLISH_DIR)%/tokens"
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Exception,Config/Data}'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    App\Config\ConfigRepository:
+        arguments:
+            $configs_dir: "%app.configs_dir%"
+
+    App\Config\ConfigPublisher:
+        arguments:
+            $configs_dir: "%app.configs_dir%"
+            $revisions_dir: "%app.revisions_dir%"
+
+    App\Command\GenerateApiToken:
+        arguments:
+            $tokens_dir: "%app.tokens_dir%"
+
+    App\Security\ApiUserProvider:
+        arguments:
+            $tokens_dir: "%app.tokens_dir%"

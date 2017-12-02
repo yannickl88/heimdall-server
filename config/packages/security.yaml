@@ -1,0 +1,18 @@
+security:
+    providers:
+        api:
+            id: App\Security\ApiUserProvider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api:
+            pattern: ^/api
+            guard:
+                authenticators:
+                    - App\Security\TokenAuthenticator
+
+        main:
+            anonymous: ~
