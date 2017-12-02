@@ -13,6 +13,6 @@ class IndexController
 {
     public function __invoke()
     {
-        return new Response('<html><body><h1>Heimdall Config Server online!</h1></body></html>');
+        return new Response('<html><head><title>Heimdall</title></head><body><h1>Heimdall Config Server online!</h1></body></html>');
     }
 }
