@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Test\Exception;
+namespace App\Tests\Exception;
 
 use App\Exception\ConfigException;
 use App\Exception\PublishException;

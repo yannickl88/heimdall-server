@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Test\Security;
+namespace App\Tests\Security;
 
 use App\Security\ApiUser;
 use PHPUnit\Framework\TestCase;
@@ -17,6 +17,7 @@ class ApiUserTest extends TestCase
         $user = new ApiUser(['username' => 'henk', 'token' => 'foobar']);
 
         self::assertSame('henk', $user->getUsername());
+        self::assertSame('foobar', $user->getTokenKey());
         self::assertSame('', $user->getPassword());
         self::assertSame('', $user->getSalt());
         self::assertSame(['ROLE_USER', 'ROLE_API_USER'], $user->getRoles());

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Test\Security;
+namespace App\Tests\Security;
 
 use App\Security\ApiUser;
 use App\Security\ApiUserProvider;
