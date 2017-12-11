@@ -75,6 +75,13 @@ class ConfigPublisher
 
     private function save(string $identifier, Config $config): void
     {
+        if (!file_exists($this->configs_dir) && !mkdir($this->configs_dir) && !is_dir($this->configs_dir)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $this->configs_dir));
+        }
+        if (!file_exists($this->revisions_dir) && !mkdir($this->revisions_dir) && !is_dir($this->revisions_dir)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $this->revisions_dir));
+        }
+
         $file = $this->configs_dir . '/' . $identifier . '.json';
 
         file_put_contents($file, json_encode($config, JSON_PRETTY_PRINT));

@@ -33,6 +33,10 @@ class GenerateApiToken extends Command
             return;
         }
 
+        if (!file_exists($this->tokens_dir) && !mkdir($this->tokens_dir) && !is_dir($this->tokens_dir)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $this->tokens_dir));
+        }
+
         do {
             $token = bin2hex(random_bytes(16));
 
