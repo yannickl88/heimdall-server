@@ -1,7 +1,7 @@
 parameters:
-    app.configs_dir: "%kernel.project_dir%/%env(APP_PUBLISH_DIR)%/configs"
-    app.revisions_dir: "%kernel.project_dir%/%env(APP_PUBLISH_DIR)%/revisions"
-    app.tokens_dir: "%kernel.project_dir%/%env(APP_PUBLISH_DIR)%/tokens"
+    app.configs_dir: "%env(APP_PUBLISH_DIR)%/configs"
+    app.revisions_dir: "%env(APP_PUBLISH_DIR)%/revisions"
+    app.tokens_dir: "%env(APP_PUBLISH_DIR)%/tokens"
 
 services:
     _defaults:
